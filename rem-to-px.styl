@@ -1,0 +1,108 @@
+rem_to_px(prop, args)
+  px_version = get_px(args)
+  if px_version
+    {prop} px_version
+  {prop} args
+
+get_px(args)
+  px_version = ()
+  has-rem = false
+  multi-level = false
+  for arg, i in args
+    argset = arg
+    if length(arg) > 1
+      px_arg = get_px(argset)
+      if px_arg
+        px_version[i] = join(' ', px_arg)
+        has-rem = true
+      else
+        px_version[i] = argset
+      multi-level = true
+    else
+      if arg is a 'unit'
+        if unit(argset) == 'rem'
+          px_version[i] = unit(argset * 10, px)
+          has-rem = true
+        else
+          px_version[i] = argset
+      else
+        px_version[i] = argset
+  if multi-level
+    px_version = join(', ', px_version)
+  return has-rem ? px_version : has-rem
+
+
+height()
+  rem_to_px('height', arguments)
+
+min-height()
+  rem_to_px('min-height', arguments)
+
+max-height()
+  rem_to_px('max-height', arguments)
+
+width()
+  rem_to_px('width', arguments)
+
+min-width()
+  rem_to_px('min-width', arguments)
+
+max-width()
+  rem_to_px('max-width', arguments)
+
+font()
+  rem_to_px('font', arguments)
+
+font-size()
+  rem_to_px('font-size', arguments)
+
+line-height()
+  rem_to_px('line-height', arguments)
+
+border()
+  rem_to_px('border', arguments)
+
+border-width()
+  rem_to_px('border-width', arguments)
+
+outline()
+  rem_to_px('outline', arguments)
+
+outline-width()
+  rem_to_px('outline-widths', arguments)
+
+padding()
+  rem_to_px('padding', arguments)
+
+padding-top()
+  rem_to_px('padding-top', arguments)
+
+padding-bottom()
+  rem_to_px('padding-bottom', arguments)
+
+padding-left()
+  rem_to_px('padding-left', arguments)
+
+padding-right()
+  rem_to_px('padding-right', arguments)
+
+margin()
+  rem_to_px('margin', arguments)
+
+margin-top()
+  rem_to_px('margin-top', arguments)
+
+margin-bottom()
+  rem_to_px('margin-bottom', arguments)
+
+margin-left()
+  rem_to_px('margin-left', arguments)
+
+margin-right()
+  rem_to_px('margin-right', arguments)
+
+background()
+  rem_to_px('background', arguments)
+
+background-position()
+  rem_to_px('background-position', arguments)
