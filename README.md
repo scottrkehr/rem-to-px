@@ -1,4 +1,4 @@
-####There are three basic parts to this.
+##There are three basic parts to this.
 
 
 ###There is a mixin for every property that uses rems
@@ -40,7 +40,7 @@ prop: the property name
 args: the set of arguments being passed to the property
 
 
-##get-px(args)
+###get-px(args)
 
 This function is called by the rem-to-px function and returns a pixel version of the property if needed, otherwise it returns false.
 args: property arguments
